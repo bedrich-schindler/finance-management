@@ -3,22 +3,73 @@ import React from 'react';
 import Avatar from '@material-ui/core/Avatar';
 import Button from '@material-ui/core/Button';
 import FormControl from '@material-ui/core/FormControl';
+import IconError from '@material-ui/icons/Error';
 import IconLockOutlined from '@material-ui/icons/LockOutlined';
 import Input from '@material-ui/core/Input';
 import InputLabel from '@material-ui/core/InputLabel';
 import Paper from '@material-ui/core/Paper';
+import SnackbarContent from '@material-ui/core/SnackbarContent';
 import { withRouter } from 'react-router-dom';
 import routes from '../../routes';
 import styles from './styles.scss';
 
-// eslint-disable-next-line react/prefer-stateless-function
 class LoginComponent extends React.Component {
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      formData: {
+        password: '',
+        username: '',
+      },
+      isLoginFailed: false,
+    };
+
+    this.changeHandler = this.changeHandler.bind(this);
+    this.loginHandler = this.loginHandler.bind(this);
+  }
+
+  changeHandler(e) {
+    const eventTarget = e.target;
+
+    this.setState((prevState) => {
+      const formData = Object.assign({}, prevState.formData);
+      formData[eventTarget.id] = eventTarget.value;
+
+      return { formData };
+    });
+  }
+
+  loginHandler() {
+    const { login } = this.props;
+    const { formData } = this.state;
+
+    if (!login(formData)) {
+      this.setState({ isLoginFailed: true });
+    }
+  }
+
   render() {
     const { history } = this.props;
+    const {
+      formData,
+      isLoginFailed,
+    } = this.state;
 
     return (
       <main className={styles.main}>
         <Paper className={styles.loginBox}>
+          {isLoginFailed && (
+            <SnackbarContent
+              className={styles.formErrorMessageBox}
+              message={(
+                <span className={styles.formErrorMessage}>
+                  <IconError className={styles.formErrorMessageIcon} />
+                  Username or password is not correct.
+                </span>
+              )}
+            />
+          )}
           <Avatar className={styles.signInIcon}>
             <IconLockOutlined />
           </Avatar>
@@ -35,6 +86,8 @@ class LoginComponent extends React.Component {
                 autoFocus
                 id="username"
                 name="username"
+                onChange={this.changeHandler}
+                value={formData.username}
               />
             </FormControl>
             <FormControl
@@ -49,11 +102,14 @@ class LoginComponent extends React.Component {
                 id="password"
                 name="password"
                 type="password"
+                onChange={this.changeHandler}
+                value={formData.password}
               />
             </FormControl>
             <Button
               color="primary"
               fullWidth
+              onClick={this.loginHandler}
               variant="contained"
             >
               Log in
@@ -81,6 +137,7 @@ LoginComponent.propTypes = {
   history: PropTypes.shape({
     push: PropTypes.func.isRequired,
   }).isRequired,
+  login: PropTypes.func.isRequired,
 };
 
 export default withRouter(LoginComponent);

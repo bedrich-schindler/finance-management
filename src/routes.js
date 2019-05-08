@@ -21,11 +21,13 @@ export default {
   },
   login: {
     component: () => getComponent('login', 'Login'),
+    isAnonymous: true,
     path: '/login',
     title: 'Login',
   },
   registration: {
     component: () => getComponent('registration', 'Registration'),
+    isAnonymous: true,
     path: '/registration',
     title: 'Registration',
   },

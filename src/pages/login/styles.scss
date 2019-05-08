@@ -25,6 +25,23 @@ $button-spacing: $layout-spacing * 0.25;
   margin-left: auto;
 }
 
+.formErrorMessageBox {
+  box-sizing: border-box;
+  width: 100%;
+  min-width: 0 !important;
+  max-width: 400px !important;
+  margin-bottom: $layout-spacing !important;
+}
+
+.formErrorMessage {
+  display: flex !important;
+  align-items: center !important;
+}
+
+.formErrorMessageIcon {
+  margin-right: 1.5rem;
+}
+
 .usernameField {
   width: 100%;
   margin-bottom: $field-spacing !important;

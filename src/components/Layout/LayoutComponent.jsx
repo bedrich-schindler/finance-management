@@ -4,7 +4,7 @@ import { Header } from '../Header';
 import { Menu } from '../Menu';
 import styles from './styles.scss';
 
-class Layout extends React.Component {
+class LayoutComponent extends React.Component {
   constructor(props) {
     super(props);
 
@@ -25,7 +25,10 @@ class Layout extends React.Component {
   }
 
   render() {
-    const { children } = this.props;
+    const {
+      children,
+      logout,
+    } = this.props;
     const { isMenuOpened } = this.state;
 
     return (
@@ -33,6 +36,7 @@ class Layout extends React.Component {
         <div className={styles.root}>
           <Header
             isMenuOpened={isMenuOpened}
+            onLogout={logout}
             onOpenMenu={this.handleOpenMenu}
             title="Finance management"
           />
@@ -49,15 +53,16 @@ class Layout extends React.Component {
   }
 }
 
-Layout.defaultProps = {
+LayoutComponent.defaultProps = {
   children: null,
 };
 
-Layout.propTypes = {
+LayoutComponent.propTypes = {
   children: PropTypes.oneOfType([
     PropTypes.node,
     PropTypes.element,
   ]),
+  logout: PropTypes.func.isRequired,
 };
 
-export default Layout;
+export default LayoutComponent;

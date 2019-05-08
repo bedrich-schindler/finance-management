@@ -39,7 +39,7 @@ export const getUserData = (userKey, userPassword) => {
   return null;
 };
 
-export const saveUserData = (userKey, userPassword, userData) => {
+export const saveUserData = (userKey, userPassword, userInfo, userStore) => {
   let applicationStoreEncrypted = localStorage.getItem(STORE_KEY);
   let applicationStore = {};
 
@@ -51,8 +51,18 @@ export const saveUserData = (userKey, userPassword, userData) => {
     }
   }
 
-  applicationStore[userKey] = encryptObject(userData, userPassword);
+  const userObject = {
+    info: {
+      ...userInfo,
+      username: userKey,
+    },
+    store: userStore,
+  };
+
+  applicationStore[userKey] = encryptObject(userObject, userPassword);
   applicationStoreEncrypted = encryptObject(applicationStore, STORE_SECRET);
 
   localStorage.setItem(STORE_KEY, applicationStoreEncrypted);
+
+  return userObject;
 };

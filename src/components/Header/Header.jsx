@@ -33,6 +33,7 @@ export class Header extends React.Component {
   }
 
   renderAccountMenu() {
+    const { onLogout } = this.props;
     const { accountMenuEl } = this.state;
 
     return (
@@ -48,7 +49,7 @@ export class Header extends React.Component {
           open={Boolean(accountMenuEl)}
           onClose={this.handleCloseAccountMenu}
         >
-          <MenuItem onClick={this.handleCloseAccountMenu}>
+          <MenuItem onClick={onLogout}>
             Logout
           </MenuItem>
         </Menu>
@@ -117,6 +118,7 @@ export class Header extends React.Component {
 Header.propTypes = {
   classes: PropTypes.shape({}).isRequired,
   isMenuOpened: PropTypes.bool.isRequired,
+  onLogout: PropTypes.func.isRequired,
   onOpenMenu: PropTypes.func.isRequired,
   title: PropTypes.string.isRequired,
 };

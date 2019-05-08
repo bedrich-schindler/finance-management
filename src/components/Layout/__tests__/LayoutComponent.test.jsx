@@ -1,13 +1,13 @@
 import React from 'react';
 import { shallow } from 'enzyme';
-import { Layout } from '..';
+import LayoutComponent from '../LayoutComponent';
 
 describe('rendering', () => {
   it('renders correctly', () => {
     const tree = shallow(
-      <Layout>
+      <LayoutComponent logout={() => {}}>
         <p>Content</p>
-      </Layout>,
+      </LayoutComponent>,
     );
 
     expect(tree).toMatchSnapshot();

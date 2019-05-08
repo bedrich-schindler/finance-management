@@ -13,6 +13,7 @@ describe('rendering', () => {
         classes={{}}
         title="Title"
         isMenuOpened={false}
+        onLogout={() => {}}
         onOpenMenu={() => {}}
       />,
     );
@@ -26,6 +27,7 @@ describe('rendering', () => {
         classes={{}}
         title="Title"
         isMenuOpened
+        onLogout={() => {}}
         onOpenMenu={() => {}}
       />,
     );
@@ -42,6 +44,7 @@ describe('functionality', () => {
         classes={{}}
         title="Title"
         isMenuOpened={false}
+        onLogout={() => {}}
         onOpenMenu={spy}
       />,
     );
