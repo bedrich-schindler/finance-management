@@ -1,0 +1,187 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`rendering renders correctly 1`] = `
+<WithStyles(Drawer)
+  className="undefined"
+  classes={
+    Object {
+      "paper": "undefined",
+    }
+  }
+  open={false}
+  variant="permanent"
+>
+  <div>
+    <WithStyles(IconButton)
+      onClick={[Function]}
+    >
+      <pure(ChevronLeftIcon) />
+    </WithStyles(IconButton)>
+  </div>
+  <WithStyles(Divider) />
+  <WithStyles(List)>
+    <WithStyles(ListItem)
+      button={true}
+      key="/"
+      onClick={[Function]}
+    >
+      <WithStyles(ListItemIcon)>
+        <pure(DashboardIcon) />
+      </WithStyles(ListItemIcon)>
+      <WithStyles(ListItemText)
+        primary="Dashboard"
+      />
+    </WithStyles(ListItem)>
+    <WithStyles(Divider)
+      key="pseudo_generated_key_0"
+    />
+    <WithStyles(ListItem)
+      button={true}
+      key="/revenues"
+      onClick={[Function]}
+    >
+      <WithStyles(ListItemIcon)>
+        <pure(AttachMoneyIcon) />
+      </WithStyles(ListItemIcon)>
+      <WithStyles(ListItemText)
+        primary="Revenues"
+      />
+    </WithStyles(ListItem)>
+    <WithStyles(ListItem)
+      button={true}
+      key="/expenses"
+      onClick={[Function]}
+    >
+      <WithStyles(ListItemIcon)>
+        <pure(MoneyOffIcon) />
+      </WithStyles(ListItemIcon)>
+      <WithStyles(ListItemText)
+        primary="Expenses"
+      />
+    </WithStyles(ListItem)>
+    <WithStyles(Divider)
+      key="pseudo_generated_key_1"
+    />
+    <WithStyles(ListItem)
+      button={true}
+      key="/categories"
+      onClick={[Function]}
+    >
+      <WithStyles(ListItemIcon)>
+        <pure(ListIcon) />
+      </WithStyles(ListItemIcon)>
+      <WithStyles(ListItemText)
+        primary="Categories"
+      />
+    </WithStyles(ListItem)>
+    <WithStyles(Divider)
+      key="pseudo_generated_key_2"
+    />
+    <WithStyles(ListItem)
+      button={true}
+      key="/settings"
+      onClick={[Function]}
+    >
+      <WithStyles(ListItemIcon)>
+        <pure(SettingsIcon) />
+      </WithStyles(ListItemIcon)>
+      <WithStyles(ListItemText)
+        primary="Settings"
+      />
+    </WithStyles(ListItem)>
+  </WithStyles(List)>
+</WithStyles(Drawer)>
+`;
+
+exports[`rendering renders correctly with opened menu 1`] = `
+<WithStyles(Drawer)
+  className=""
+  classes={
+    Object {
+      "paper": "",
+    }
+  }
+  open={true}
+  variant="permanent"
+>
+  <div>
+    <WithStyles(IconButton)
+      onClick={[Function]}
+    >
+      <pure(ChevronLeftIcon) />
+    </WithStyles(IconButton)>
+  </div>
+  <WithStyles(Divider) />
+  <WithStyles(List)>
+    <WithStyles(ListItem)
+      button={true}
+      key="/"
+      onClick={[Function]}
+    >
+      <WithStyles(ListItemIcon)>
+        <pure(DashboardIcon) />
+      </WithStyles(ListItemIcon)>
+      <WithStyles(ListItemText)
+        primary="Dashboard"
+      />
+    </WithStyles(ListItem)>
+    <WithStyles(Divider)
+      key="pseudo_generated_key_0"
+    />
+    <WithStyles(ListItem)
+      button={true}
+      key="/revenues"
+      onClick={[Function]}
+    >
+      <WithStyles(ListItemIcon)>
+        <pure(AttachMoneyIcon) />
+      </WithStyles(ListItemIcon)>
+      <WithStyles(ListItemText)
+        primary="Revenues"
+      />
+    </WithStyles(ListItem)>
+    <WithStyles(ListItem)
+      button={true}
+      key="/expenses"
+      onClick={[Function]}
+    >
+      <WithStyles(ListItemIcon)>
+        <pure(MoneyOffIcon) />
+      </WithStyles(ListItemIcon)>
+      <WithStyles(ListItemText)
+        primary="Expenses"
+      />
+    </WithStyles(ListItem)>
+    <WithStyles(Divider)
+      key="pseudo_generated_key_1"
+    />
+    <WithStyles(ListItem)
+      button={true}
+      key="/categories"
+      onClick={[Function]}
+    >
+      <WithStyles(ListItemIcon)>
+        <pure(ListIcon) />
+      </WithStyles(ListItemIcon)>
+      <WithStyles(ListItemText)
+        primary="Categories"
+      />
+    </WithStyles(ListItem)>
+    <WithStyles(Divider)
+      key="pseudo_generated_key_2"
+    />
+    <WithStyles(ListItem)
+      button={true}
+      key="/settings"
+      onClick={[Function]}
+    >
+      <WithStyles(ListItemIcon)>
+        <pure(SettingsIcon) />
+      </WithStyles(ListItemIcon)>
+      <WithStyles(ListItemText)
+        primary="Settings"
+      />
+    </WithStyles(ListItem)>
+  </WithStyles(List)>
+</WithStyles(Drawer)>
+`;

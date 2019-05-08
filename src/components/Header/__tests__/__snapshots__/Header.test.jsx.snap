@@ -1,0 +1,87 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`rendering renders correctly 1`] = `
+<WithStyles(AppBar)
+  className=""
+  position="static"
+>
+  <WithStyles(Toolbar)
+    disableGutters={true}
+  >
+    <div
+      className="menuButton"
+    >
+      <WithStyles(IconButton)
+        color="inherit"
+        onClick={[Function]}
+      >
+        <pure(MenuIcon) />
+      </WithStyles(IconButton)>
+    </div>
+    <span
+      className="title"
+    >
+      Title
+    </span>
+    <div
+      className="accountMenuButton"
+    >
+      <WithStyles(IconButton)
+        color="inherit"
+        onClick={[Function]}
+      >
+        <pure(AccountCircleIcon) />
+      </WithStyles(IconButton)>
+      <WithStyles(Menu)
+        anchorEl={null}
+        onClose={[Function]}
+        open={false}
+      >
+        <WithStyles(MenuItem)
+          onClick={[Function]}
+        >
+          Logout
+        </WithStyles(MenuItem)>
+      </WithStyles(Menu)>
+    </div>
+  </WithStyles(Toolbar)>
+</WithStyles(AppBar)>
+`;
+
+exports[`rendering renders correctly with opened menu 1`] = `
+<WithStyles(AppBar)
+  className="undefined"
+  position="static"
+>
+  <WithStyles(Toolbar)
+    disableGutters={false}
+  >
+    <span
+      className="title"
+    >
+      Title
+    </span>
+    <div
+      className="accountMenuButton"
+    >
+      <WithStyles(IconButton)
+        color="inherit"
+        onClick={[Function]}
+      >
+        <pure(AccountCircleIcon) />
+      </WithStyles(IconButton)>
+      <WithStyles(Menu)
+        anchorEl={null}
+        onClose={[Function]}
+        open={false}
+      >
+        <WithStyles(MenuItem)
+          onClick={[Function]}
+        >
+          Logout
+        </WithStyles(MenuItem)>
+      </WithStyles(Menu)>
+    </div>
+  </WithStyles(Toolbar)>
+</WithStyles(AppBar)>
+`;

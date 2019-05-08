@@ -1,0 +1,47 @@
+// stylelint-disable declaration-no-important
+
+$layout-spacing: 2.5rem;
+$field-spacing: $layout-spacing * 0.5;
+$button-spacing: $layout-spacing * 0.25;
+
+.main {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+}
+
+.loginBox {
+  max-width: 400px;
+  padding: $layout-spacing;
+  margin: $layout-spacing;
+}
+
+.signInIcon {
+  margin-right: auto;
+  margin-bottom: $field-spacing;
+  margin-left: auto;
+}
+
+.usernameField {
+  width: 100%;
+  margin-bottom: $field-spacing !important;
+}
+
+.passwordField {
+  width: 100%;
+  margin-bottom: $field-spacing !important;
+}
+
+.signInButton {
+  margin-top: $button-spacing !important;
+}
+
+.applicationInfo {
+  opacity: 0.5;
+  margin-top: -1rem;
+  font-weight: 100;
+  font-size: 0.85rem;
+}
