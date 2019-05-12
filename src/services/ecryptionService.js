@@ -13,3 +13,5 @@ export const decryptObject = (encryptedStringObject, secret) => {
 
   return JSON.parse(stringObject);
 };
+
+export const hash = text => CryptoJS.SHA3(text).toString(CryptoJS.enc.Hex);

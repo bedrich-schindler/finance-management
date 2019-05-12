@@ -1,18 +1,33 @@
+import Immutable from 'immutable';
 import thunkMiddleware from 'redux-thunk';
 import {
   applyMiddleware,
   createStore,
 } from 'redux';
 import { composeWithDevTools } from 'redux-devtools-extension';
+import { getLoggedUserData } from './services/storageService';
 import reducer from './reducer';
 
 const middlewareList = [
   thunkMiddleware,
 ];
 
-const store = createStore(
-  reducer,
-  composeWithDevTools(applyMiddleware(...middlewareList)),
-);
+// eslint-disable-next-line import/no-mutable-exports
+let store;
+
+const loggedUserData = getLoggedUserData();
+
+if (loggedUserData === null) {
+  store = createStore(
+    reducer,
+    composeWithDevTools(applyMiddleware(...middlewareList)),
+  );
+} else {
+  store = createStore(
+    reducer,
+    Immutable.fromJS(loggedUserData.store),
+    composeWithDevTools(applyMiddleware(...middlewareList)),
+  );
+}
 
 export default store;
