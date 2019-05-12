@@ -13,3 +13,16 @@
   font-weight: 500;
   font-size: 1.25rem;
 }
+
+.userName {
+  position: relative;
+  top: 0.1rem;
+  margin-right: 1rem;
+  font-weight: 500;
+}
+
+@media all and (max-width: 599px) {
+  .userName {
+    display: none;
+  }
+}

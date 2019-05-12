@@ -33,11 +33,17 @@ export class Header extends React.Component {
   }
 
   renderAccountMenu() {
-    const { onLogout } = this.props;
+    const {
+      loggedUser,
+      onLogout,
+    } = this.props;
     const { accountMenuEl } = this.state;
 
     return (
       <div className={styles.accountMenuButton}>
+        <span className={styles.userName}>
+          {loggedUser.name}
+        </span>
         <IconButton
           color="inherit"
           onClick={this.handleOpenAccountMenu}
@@ -118,6 +124,9 @@ export class Header extends React.Component {
 Header.propTypes = {
   classes: PropTypes.shape({}).isRequired,
   isMenuOpened: PropTypes.bool.isRequired,
+  loggedUser: PropTypes.shape({
+    name: PropTypes.string.isRequired,
+  }).isRequired,
   onLogout: PropTypes.func.isRequired,
   onOpenMenu: PropTypes.func.isRequired,
   title: PropTypes.string.isRequired,

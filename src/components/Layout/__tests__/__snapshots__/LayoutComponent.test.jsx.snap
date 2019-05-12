@@ -7,6 +7,11 @@ exports[`rendering renders correctly 1`] = `
   >
     <WithStyles(Header)
       isMenuOpened={false}
+      loggedUser={
+        Object {
+          "name": "Name",
+        }
+      }
       onLogout={[Function]}
       onOpenMenu={[Function]}
       title="Finance management"

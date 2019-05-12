@@ -26,6 +26,11 @@ exports[`rendering renders correctly 1`] = `
     <div
       className="accountMenuButton"
     >
+      <span
+        className="userName"
+      >
+        Name
+      </span>
       <WithStyles(IconButton)
         color="inherit"
         onClick={[Function]}
@@ -64,6 +69,11 @@ exports[`rendering renders correctly with opened menu 1`] = `
     <div
       className="accountMenuButton"
     >
+      <span
+        className="userName"
+      >
+        Name
+      </span>
       <WithStyles(IconButton)
         color="inherit"
         onClick={[Function]}
