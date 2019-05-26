@@ -33,7 +33,7 @@ class LoginComponent extends React.Component {
     const eventTarget = e.target;
 
     this.setState((prevState) => {
-      const formData = Object.assign({}, prevState.formData);
+      const formData = { ...prevState.formData };
       formData[eventTarget.id] = eventTarget.value;
 
       return { formData };

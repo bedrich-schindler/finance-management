@@ -1,4 +1,50 @@
+import { CATEGORY_TYPES } from '../resources/category';
 import { isUserSaved } from './storageService';
+
+export const validateCategory = (data, storedDataObj) => {
+  const errors = {
+    elements: {
+      name: null,
+      type: null,
+    },
+    isValid: true,
+  };
+
+  const emptyCheck = [
+    'name',
+    'type',
+  ];
+
+  emptyCheck.forEach((element) => {
+    if (data[element].trim() === '') {
+      errors.elements[element] = 'Field is required.';
+      errors.isValid = false;
+    }
+  });
+
+  if (!errors.isValid) {
+    return errors;
+  }
+
+  if (
+    storedDataObj.categoryList.find(
+      iCategory => (
+        iCategory.name.toLowerCase() === data.name.toLowerCase()
+        && iCategory.id !== data.id
+      ),
+    ) !== undefined
+  ) {
+    errors.elements.name = 'This value is not unique.';
+    errors.isValid = false;
+  }
+
+  if (!CATEGORY_TYPES.includes(data.type)) {
+    errors.elements.type = 'This value is not supported.';
+    errors.isValid = false;
+  }
+
+  return errors;
+};
 
 export const validateUser = (data) => {
   const errors = {

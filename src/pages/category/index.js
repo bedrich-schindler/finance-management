@@ -1,1 +1,1 @@
-export { default as CategoriesPage } from './CategoriesComponent';
+export { default as CategoriesPage } from './CategoriesContainer';
