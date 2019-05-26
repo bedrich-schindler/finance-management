@@ -123,3 +123,40 @@ export const saveUserData = (userKey, userPassword, userInfo, userStore) => {
 
   return userObject;
 };
+
+export const updateLoggedUserData = (userStore) => {
+  const loggedUserCredentials = getLoggedUserCredentials();
+
+  if (loggedUserCredentials === null) {
+    return false;
+  }
+
+  const loggedUserData = getLoggedUserData();
+
+  if (loggedUserData === null) {
+    return false;
+  }
+
+  let applicationStoreEncrypted = localStorage.getItem(APP_STORE_KEY);
+  let applicationStore = {};
+
+  if (applicationStoreEncrypted !== null) {
+    try {
+      applicationStore = decryptObject(applicationStoreEncrypted, STORE_SECRET);
+    } catch (e) {
+      applicationStore = {};
+    }
+  }
+
+  const userObject = {
+    info: loggedUserData.info,
+    store: userStore,
+  };
+
+  applicationStore[loggedUserCredentials.username] = encryptObject(userObject, loggedUserCredentials.password);
+  applicationStoreEncrypted = encryptObject(applicationStore, STORE_SECRET);
+
+  localStorage.setItem(APP_STORE_KEY, applicationStoreEncrypted);
+
+  return true;
+};

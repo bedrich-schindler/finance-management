@@ -5,7 +5,10 @@ import {
   createStore,
 } from 'redux';
 import { composeWithDevTools } from 'redux-devtools-extension';
-import { getLoggedUserData } from './services/storageService';
+import {
+  getLoggedUserData,
+  updateLoggedUserData,
+} from './services/storageService';
 import reducer from './reducer';
 
 const middlewareList = [
@@ -29,5 +32,9 @@ if (loggedUserData === null) {
     composeWithDevTools(applyMiddleware(...middlewareList)),
   );
 }
+
+store.subscribe(() => {
+  updateLoggedUserData(store.getState().toJS());
+});
 
 export default store;
