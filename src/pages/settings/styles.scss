@@ -1,0 +1,13 @@
+// stylelint-disable declaration-no-important
+
+$layout-spacing: 2.5rem;
+$field-spacing: $layout-spacing * 0.5;
+
+.paper {
+  max-width: 32rem;
+  padding: $field-spacing;
+}
+
+.field {
+  width: 100%;
+}

@@ -6,11 +6,13 @@ import {
   editRevenue,
   selectRevenueList,
 } from '../../resources/revenue';
+import { selectSettings } from '../../resources/settings';
 import Component from './RevenuesComponent';
 
 const mapStateToProps = state => ({
   categoryList: selectCategoryList(state),
   revenueList: selectRevenueList(state),
+  settings: selectSettings(state),
 });
 
 const mapDispatchToProps = dispatch => ({

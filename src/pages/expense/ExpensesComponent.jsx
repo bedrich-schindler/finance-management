@@ -12,6 +12,7 @@ import TableCell from '@material-ui/core/TableCell';
 import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
 import Paper from '@material-ui/core/Paper';
+import { code } from 'currency-codes';
 import { Layout } from '../../components/Layout';
 import { CATEGORY_TYPES } from '../../resources/category';
 import { AddExpenseForm } from './components/AddExpenseForm';
@@ -82,6 +83,7 @@ class ExpensesComponent extends React.Component {
       deleteExpense,
       editExpense,
       expenseList,
+      settings,
     } = this.props;
     const {
       deleteExpenseFormOpenedId,
@@ -90,6 +92,9 @@ class ExpensesComponent extends React.Component {
       isDeleteExpenseFormOpened,
       isEditExpenseFormOpened,
     } = this.state;
+
+    const { currency } = settings;
+    const currencyPrecision = code(currency).digits;
 
     const getCategoryLabel = (row) => {
       const category = categoryList.find(iCategory => iCategory.id === row.category);
@@ -125,9 +130,9 @@ class ExpensesComponent extends React.Component {
                     {row.expense}
                   </TableCell>
                   <TableCell>
-                    {row.amount}
+                    {row.amount.toFixed(currencyPrecision)}
                     {' '}
-CZK
+                    {settings.currency}
                   </TableCell>
                   <TableCell>
                     {getCategoryLabel(row)}
@@ -164,6 +169,7 @@ CZK
             categoryList={categoryList}
             onClose={this.handleCloseAddExpenseForm}
             onSave={addExpense}
+            settings={settings}
           />
         )}
         {isDeleteExpenseFormOpened && (
@@ -180,6 +186,7 @@ CZK
             onClose={this.handleCloseEditExpenseForm}
             onSave={editExpense}
             expenseList={expenseList}
+            settings={settings}
           />
         )}
       </Layout>
@@ -203,6 +210,9 @@ ExpensesComponent.propTypes = {
     expense: PropTypes.string.isRequired,
     id: PropTypes.string.isRequired,
   })).isRequired,
+  settings: PropTypes.shape({
+    currency: PropTypes.string.isRequired,
+  }).isRequired,
 };
 
 export default ExpensesComponent;

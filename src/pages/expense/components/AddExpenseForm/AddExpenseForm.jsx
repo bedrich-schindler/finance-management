@@ -7,8 +7,9 @@ import Dialog from '@material-ui/core/Dialog';
 import DialogActions from '@material-ui/core/DialogActions';
 import DialogContent from '@material-ui/core/DialogContent';
 import DialogTitle from '@material-ui/core/DialogTitle';
-import InputLabel from '@material-ui/core/InputLabel';
 import Input from '@material-ui/core/Input';
+import InputAdornment from '@material-ui/core/InputAdornment';
+import InputLabel from '@material-ui/core/InputLabel';
 import FormHelperText from '@material-ui/core/FormHelperText';
 import Select from '@material-ui/core/NativeSelect';
 import { validateExpense } from '../../../../services/validatorService';
@@ -80,6 +81,7 @@ class AddExpenseForm extends React.Component {
     const {
       categoryList,
       onClose,
+      settings,
     } = this.props;
     const {
       formData,
@@ -149,6 +151,9 @@ class AddExpenseForm extends React.Component {
               Amount
             </InputLabel>
             <Input
+              endAdornment={
+                <InputAdornment position="end">{settings.currency}</InputAdornment>
+              }
               id="amount"
               name="amount"
               onChange={this.changeHandler}
@@ -221,6 +226,9 @@ AddExpenseForm.propTypes = {
   })).isRequired,
   onClose: PropTypes.func.isRequired,
   onSave: PropTypes.func.isRequired,
+  settings: PropTypes.shape({
+    currency: PropTypes.string.isRequired,
+  }).isRequired,
 };
 
 export default AddExpenseForm;

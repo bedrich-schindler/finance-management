@@ -12,6 +12,7 @@ import TableCell from '@material-ui/core/TableCell';
 import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
 import Paper from '@material-ui/core/Paper';
+import { code } from 'currency-codes';
 import { Layout } from '../../components/Layout';
 import { CATEGORY_TYPES } from '../../resources/category';
 import { AddRevenueForm } from './components/AddRevenueForm';
@@ -82,6 +83,7 @@ class RevenuesComponent extends React.Component {
       deleteRevenue,
       editRevenue,
       revenueList,
+      settings,
     } = this.props;
     const {
       deleteRevenueFormOpenedId,
@@ -90,6 +92,9 @@ class RevenuesComponent extends React.Component {
       isDeleteRevenueFormOpened,
       isEditRevenueFormOpened,
     } = this.state;
+
+    const { currency } = settings;
+    const currencyPrecision = code(currency).digits;
 
     const getCategoryLabel = (row) => {
       const category = categoryList.find(iCategory => iCategory.id === row.category);
@@ -125,9 +130,9 @@ class RevenuesComponent extends React.Component {
                     {row.revenue}
                   </TableCell>
                   <TableCell>
-                    {row.amount}
+                    {row.amount.toFixed(currencyPrecision)}
                     {' '}
-CZK
+                    {settings.currency}
                   </TableCell>
                   <TableCell>
                     {getCategoryLabel(row)}
@@ -164,6 +169,7 @@ CZK
             categoryList={categoryList}
             onClose={this.handleCloseAddRevenueForm}
             onSave={addRevenue}
+            settings={settings}
           />
         )}
         {isDeleteRevenueFormOpened && (
@@ -180,6 +186,7 @@ CZK
             onClose={this.handleCloseEditRevenueForm}
             onSave={editRevenue}
             revenueList={revenueList}
+            settings={settings}
           />
         )}
       </Layout>
@@ -203,6 +210,9 @@ RevenuesComponent.propTypes = {
     id: PropTypes.string.isRequired,
     revenue: PropTypes.string.isRequired,
   })).isRequired,
+  settings: PropTypes.shape({
+    currency: PropTypes.string.isRequired,
+  }).isRequired,
 };
 
 export default RevenuesComponent;
