@@ -1,1 +1,1 @@
-export { default as ExpensesPage } from './ExpensesComponent';
+export { default as ExpensesPage } from './ExpensesContainer';
