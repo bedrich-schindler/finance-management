@@ -1,1 +1,1 @@
-export { default as RevenuesPage } from './RevenuesComponent';
+export { default as RevenuesPage } from './RevenuesContainer';

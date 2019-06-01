@@ -1,0 +1,23 @@
+// stylelint-disable declaration-no-important
+
+$layout-spacing: 2.5rem;
+$field-spacing: $layout-spacing * 0.5;
+
+.tableWrapper {
+  width: 100%;
+  overflow-x: auto;
+}
+
+.addButton {
+  position: fixed !important;
+  top: auto;
+  right: 2rem;
+  bottom: 2rem;
+  left: auto;
+  margin: 0 !important;
+}
+
+.field {
+  width: 100%;
+  margin-bottom: $field-spacing !important;
+}

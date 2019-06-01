@@ -46,6 +46,33 @@ export const validateCategory = (data, storedDataObj) => {
   return errors;
 };
 
+export const validateRevenue = (data) => {
+  const errors = {
+    elements: {
+      amount: null,
+      date: null,
+      category: null,
+      revenue: null,
+    },
+    isValid: true,
+  };
+
+  const emptyCheck = [
+    'amount',
+    'date',
+    'revenue',
+  ];
+
+  emptyCheck.forEach((element) => {
+    if (data[element].trim() === '') {
+      errors.elements[element] = 'Field is required.';
+      errors.isValid = false;
+    }
+  });
+
+  return errors;
+};
+
 export const validateUser = (data) => {
   const errors = {
     elements: {

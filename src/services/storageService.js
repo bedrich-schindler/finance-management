@@ -153,7 +153,10 @@ export const updateLoggedUserData = (userStore) => {
     store: userStore,
   };
 
-  applicationStore[loggedUserCredentials.username] = encryptObject(userObject, loggedUserCredentials.password);
+  applicationStore[loggedUserCredentials.username] = encryptObject(
+    userObject,
+    loggedUserCredentials.password,
+  );
   applicationStoreEncrypted = encryptObject(applicationStore, STORE_SECRET);
 
   localStorage.setItem(APP_STORE_KEY, applicationStoreEncrypted);
