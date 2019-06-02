@@ -10,6 +10,7 @@ import Table from '@material-ui/core/Table';
 import TableBody from '@material-ui/core/TableBody';
 import TableCell from '@material-ui/core/TableCell';
 import TableHead from '@material-ui/core/TableHead';
+import TablePagination from '@material-ui/core/TablePagination';
 import TableRow from '@material-ui/core/TableRow';
 import Paper from '@material-ui/core/Paper';
 import { code } from 'currency-codes';
@@ -30,6 +31,8 @@ class RevenuesComponent extends React.Component {
       isAddRevenueFormOpened: false,
       isDeleteRevenueFormOpened: false,
       isEditRevenueFormOpened: false,
+      revenueTablePage: 0,
+      revenueTableRowsPerPage: 5,
     };
 
     this.handleOpenAddRevenueForm = this.handleOpenAddRevenueForm.bind(this);
@@ -38,6 +41,8 @@ class RevenuesComponent extends React.Component {
     this.handleCloseDeleteRevenueForm = this.handleCloseDeleteRevenueForm.bind(this);
     this.handleOpenEditRevenueForm = this.handleOpenEditRevenueForm.bind(this);
     this.handleCloseEditRevenueForm = this.handleCloseEditRevenueForm.bind(this);
+    this.handleChangeRevenueTablePage = this.handleChangeRevenueTablePage.bind(this);
+    this.handleChangeRevenueTableRowsPerPage = this.handleChangeRevenueTableRowsPerPage.bind(this);
   }
 
   handleOpenAddRevenueForm() {
@@ -76,6 +81,28 @@ class RevenuesComponent extends React.Component {
     });
   }
 
+  handleChangeRevenueTablePage(e, newPage) {
+    return this.setState({
+      revenueTablePage: newPage,
+    });
+  }
+
+  handleChangeRevenueTableRowsPerPage(e) {
+    const { revenueList } = this.props;
+    const { revenueTablePage } = this.state;
+
+    if (revenueTablePage * +e.target.value >= revenueList.length) {
+      return this.setState({
+        revenueTablePage: Math.floor(revenueList.length / +e.target.value),
+        revenueTableRowsPerPage: +e.target.value,
+      });
+    }
+
+    return this.setState({
+      revenueTableRowsPerPage: +e.target.value,
+    });
+  }
+
   render() {
     const {
       addRevenue,
@@ -91,6 +118,8 @@ class RevenuesComponent extends React.Component {
       isAddRevenueFormOpened,
       isDeleteRevenueFormOpened,
       isEditRevenueFormOpened,
+      revenueTablePage,
+      revenueTableRowsPerPage,
     } = this.state;
 
     const { currency } = settings;
@@ -121,32 +150,38 @@ class RevenuesComponent extends React.Component {
               </TableRow>
             </TableHead>
             <TableBody>
-              {revenueList.map(row => (
-                <TableRow key={row.id}>
-                  <TableCell>
-                    {moment(row.date).format('DD. MM. YYYY HH:mm')}
-                  </TableCell>
-                  <TableCell>
-                    {row.revenue}
-                  </TableCell>
-                  <TableCell>
-                    {row.amount.toFixed(currencyPrecision)}
-                    {' '}
-                    {settings.currency}
-                  </TableCell>
-                  <TableCell>
-                    {getCategoryLabel(row)}
-                  </TableCell>
-                  <TableCell align="right">
-                    <IconButton onClick={() => this.handleOpenEditRevenueForm(row.id)}>
-                      <IconEdit />
-                    </IconButton>
-                    <IconButton onClick={() => this.handleOpenDeleteRevenueForm(row.id)}>
-                      <IconDelete />
-                    </IconButton>
-                  </TableCell>
-                </TableRow>
-              ))}
+              {revenueList
+                .slice(
+                  revenueTablePage * revenueTableRowsPerPage,
+                  revenueTablePage * revenueTableRowsPerPage + revenueTableRowsPerPage,
+                )
+                .map(row => (
+                  <TableRow key={row.id}>
+                    <TableCell>
+                      {moment(row.date).format('DD. MM. YYYY HH:mm')}
+                    </TableCell>
+                    <TableCell>
+                      {row.revenue}
+                    </TableCell>
+                    <TableCell>
+                      {row.amount.toFixed(currencyPrecision)}
+                      {' '}
+                      {settings.currency}
+                    </TableCell>
+                    <TableCell>
+                      {getCategoryLabel(row)}
+                    </TableCell>
+                    <TableCell align="right">
+                      <IconButton onClick={() => this.handleOpenEditRevenueForm(row.id)}>
+                        <IconEdit />
+                      </IconButton>
+                      <IconButton onClick={() => this.handleOpenDeleteRevenueForm(row.id)}>
+                        <IconDelete />
+                      </IconButton>
+                    </TableCell>
+                  </TableRow>
+                ))
+              }
               {revenueList.length === 0 && (
                 <TableRow>
                   <TableCell colSpan={3}>
@@ -156,6 +191,21 @@ class RevenuesComponent extends React.Component {
               )}
             </TableBody>
           </Table>
+          <TablePagination
+            component="div"
+            count={revenueList.length}
+            backIconButtonProps={{
+              'aria-label': 'Previous Page',
+            }}
+            nextIconButtonProps={{
+              'aria-label': 'Next Page',
+            }}
+            onChangePage={this.handleChangeRevenueTablePage}
+            onChangeRowsPerPage={this.handleChangeRevenueTableRowsPerPage}
+            page={revenueTablePage}
+            rowsPerPage={revenueTableRowsPerPage}
+            rowsPerPageOptions={[5, 10, 25]}
+          />
         </Paper>
         <FloatingActionButton
           className={styles.addButton}

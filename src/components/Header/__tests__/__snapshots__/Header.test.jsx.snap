@@ -1,22 +1,22 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`rendering renders correctly 1`] = `
-<WithStyles(AppBar)
+<WithStyles(ForwardRef(AppBar))
   className=""
   position="static"
 >
-  <WithStyles(Toolbar)
+  <WithStyles(ForwardRef(Toolbar))
     disableGutters={true}
   >
     <div
       className="menuButton"
     >
-      <WithStyles(IconButton)
+      <WithStyles(ForwardRef(IconButton))
         color="inherit"
         onClick={[Function]}
       >
-        <pure(MenuIcon) />
-      </WithStyles(IconButton)>
+        <[object Object] />
+      </WithStyles(ForwardRef(IconButton))>
     </div>
     <span
       className="title"
@@ -31,34 +31,34 @@ exports[`rendering renders correctly 1`] = `
       >
         Name
       </span>
-      <WithStyles(IconButton)
+      <WithStyles(ForwardRef(IconButton))
         color="inherit"
         onClick={[Function]}
       >
-        <pure(AccountCircleIcon) />
-      </WithStyles(IconButton)>
-      <WithStyles(Menu)
+        <[object Object] />
+      </WithStyles(ForwardRef(IconButton))>
+      <WithStyles(ForwardRef(Menu))
         anchorEl={null}
         onClose={[Function]}
         open={false}
       >
-        <WithStyles(MenuItem)
+        <WithStyles(ForwardRef(MenuItem))
           onClick={[Function]}
         >
           Logout
-        </WithStyles(MenuItem)>
-      </WithStyles(Menu)>
+        </WithStyles(ForwardRef(MenuItem))>
+      </WithStyles(ForwardRef(Menu))>
     </div>
-  </WithStyles(Toolbar)>
-</WithStyles(AppBar)>
+  </WithStyles(ForwardRef(Toolbar))>
+</WithStyles(ForwardRef(AppBar))>
 `;
 
 exports[`rendering renders correctly with opened menu 1`] = `
-<WithStyles(AppBar)
+<WithStyles(ForwardRef(AppBar))
   className="undefined"
   position="static"
 >
-  <WithStyles(Toolbar)
+  <WithStyles(ForwardRef(Toolbar))
     disableGutters={false}
   >
     <span
@@ -74,24 +74,24 @@ exports[`rendering renders correctly with opened menu 1`] = `
       >
         Name
       </span>
-      <WithStyles(IconButton)
+      <WithStyles(ForwardRef(IconButton))
         color="inherit"
         onClick={[Function]}
       >
-        <pure(AccountCircleIcon) />
-      </WithStyles(IconButton)>
-      <WithStyles(Menu)
+        <[object Object] />
+      </WithStyles(ForwardRef(IconButton))>
+      <WithStyles(ForwardRef(Menu))
         anchorEl={null}
         onClose={[Function]}
         open={false}
       >
-        <WithStyles(MenuItem)
+        <WithStyles(ForwardRef(MenuItem))
           onClick={[Function]}
         >
           Logout
-        </WithStyles(MenuItem)>
-      </WithStyles(Menu)>
+        </WithStyles(ForwardRef(MenuItem))>
+      </WithStyles(ForwardRef(Menu))>
     </div>
-  </WithStyles(Toolbar)>
-</WithStyles(AppBar)>
+  </WithStyles(ForwardRef(Toolbar))>
+</WithStyles(ForwardRef(AppBar))>
 `;

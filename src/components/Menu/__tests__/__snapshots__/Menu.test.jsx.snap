@@ -1,7 +1,7 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`rendering renders correctly 1`] = `
-<WithStyles(Drawer)
+<WithStyles(ForwardRef(Drawer))
   className="undefined"
   classes={
     Object {
@@ -12,89 +12,89 @@ exports[`rendering renders correctly 1`] = `
   variant="permanent"
 >
   <div>
-    <WithStyles(IconButton)
+    <WithStyles(ForwardRef(IconButton))
       onClick={[Function]}
     >
-      <pure(ChevronLeftIcon) />
-    </WithStyles(IconButton)>
+      <[object Object] />
+    </WithStyles(ForwardRef(IconButton))>
   </div>
-  <WithStyles(Divider) />
-  <WithStyles(List)>
-    <WithStyles(ListItem)
+  <WithStyles(ForwardRef(Divider)) />
+  <WithStyles(ForwardRef(List))>
+    <WithStyles(ForwardRef(ListItem))
       button={true}
       key="/"
       onClick={[Function]}
     >
-      <WithStyles(ListItemIcon)>
-        <pure(DashboardIcon) />
-      </WithStyles(ListItemIcon)>
-      <WithStyles(ListItemText)
+      <WithStyles(ForwardRef(ListItemIcon))>
+        <[object Object] />
+      </WithStyles(ForwardRef(ListItemIcon))>
+      <WithStyles(ForwardRef(ListItemText))
         primary="Dashboard"
       />
-    </WithStyles(ListItem)>
-    <WithStyles(Divider)
+    </WithStyles(ForwardRef(ListItem))>
+    <WithStyles(ForwardRef(Divider))
       key="pseudo_generated_key_0"
     />
-    <WithStyles(ListItem)
+    <WithStyles(ForwardRef(ListItem))
       button={true}
       key="/revenues"
       onClick={[Function]}
     >
-      <WithStyles(ListItemIcon)>
-        <pure(AttachMoneyIcon) />
-      </WithStyles(ListItemIcon)>
-      <WithStyles(ListItemText)
+      <WithStyles(ForwardRef(ListItemIcon))>
+        <[object Object] />
+      </WithStyles(ForwardRef(ListItemIcon))>
+      <WithStyles(ForwardRef(ListItemText))
         primary="Revenues"
       />
-    </WithStyles(ListItem)>
-    <WithStyles(ListItem)
+    </WithStyles(ForwardRef(ListItem))>
+    <WithStyles(ForwardRef(ListItem))
       button={true}
       key="/expenses"
       onClick={[Function]}
     >
-      <WithStyles(ListItemIcon)>
-        <pure(MoneyOffIcon) />
-      </WithStyles(ListItemIcon)>
-      <WithStyles(ListItemText)
+      <WithStyles(ForwardRef(ListItemIcon))>
+        <[object Object] />
+      </WithStyles(ForwardRef(ListItemIcon))>
+      <WithStyles(ForwardRef(ListItemText))
         primary="Expenses"
       />
-    </WithStyles(ListItem)>
-    <WithStyles(Divider)
+    </WithStyles(ForwardRef(ListItem))>
+    <WithStyles(ForwardRef(Divider))
       key="pseudo_generated_key_1"
     />
-    <WithStyles(ListItem)
+    <WithStyles(ForwardRef(ListItem))
       button={true}
       key="/categories"
       onClick={[Function]}
     >
-      <WithStyles(ListItemIcon)>
-        <pure(ListIcon) />
-      </WithStyles(ListItemIcon)>
-      <WithStyles(ListItemText)
+      <WithStyles(ForwardRef(ListItemIcon))>
+        <[object Object] />
+      </WithStyles(ForwardRef(ListItemIcon))>
+      <WithStyles(ForwardRef(ListItemText))
         primary="Categories"
       />
-    </WithStyles(ListItem)>
-    <WithStyles(Divider)
+    </WithStyles(ForwardRef(ListItem))>
+    <WithStyles(ForwardRef(Divider))
       key="pseudo_generated_key_2"
     />
-    <WithStyles(ListItem)
+    <WithStyles(ForwardRef(ListItem))
       button={true}
       key="/settings"
       onClick={[Function]}
     >
-      <WithStyles(ListItemIcon)>
-        <pure(SettingsIcon) />
-      </WithStyles(ListItemIcon)>
-      <WithStyles(ListItemText)
+      <WithStyles(ForwardRef(ListItemIcon))>
+        <[object Object] />
+      </WithStyles(ForwardRef(ListItemIcon))>
+      <WithStyles(ForwardRef(ListItemText))
         primary="Settings"
       />
-    </WithStyles(ListItem)>
-  </WithStyles(List)>
-</WithStyles(Drawer)>
+    </WithStyles(ForwardRef(ListItem))>
+  </WithStyles(ForwardRef(List))>
+</WithStyles(ForwardRef(Drawer))>
 `;
 
 exports[`rendering renders correctly with opened menu 1`] = `
-<WithStyles(Drawer)
+<WithStyles(ForwardRef(Drawer))
   className=""
   classes={
     Object {
@@ -105,83 +105,83 @@ exports[`rendering renders correctly with opened menu 1`] = `
   variant="permanent"
 >
   <div>
-    <WithStyles(IconButton)
+    <WithStyles(ForwardRef(IconButton))
       onClick={[Function]}
     >
-      <pure(ChevronLeftIcon) />
-    </WithStyles(IconButton)>
+      <[object Object] />
+    </WithStyles(ForwardRef(IconButton))>
   </div>
-  <WithStyles(Divider) />
-  <WithStyles(List)>
-    <WithStyles(ListItem)
+  <WithStyles(ForwardRef(Divider)) />
+  <WithStyles(ForwardRef(List))>
+    <WithStyles(ForwardRef(ListItem))
       button={true}
       key="/"
       onClick={[Function]}
     >
-      <WithStyles(ListItemIcon)>
-        <pure(DashboardIcon) />
-      </WithStyles(ListItemIcon)>
-      <WithStyles(ListItemText)
+      <WithStyles(ForwardRef(ListItemIcon))>
+        <[object Object] />
+      </WithStyles(ForwardRef(ListItemIcon))>
+      <WithStyles(ForwardRef(ListItemText))
         primary="Dashboard"
       />
-    </WithStyles(ListItem)>
-    <WithStyles(Divider)
+    </WithStyles(ForwardRef(ListItem))>
+    <WithStyles(ForwardRef(Divider))
       key="pseudo_generated_key_0"
     />
-    <WithStyles(ListItem)
+    <WithStyles(ForwardRef(ListItem))
       button={true}
       key="/revenues"
       onClick={[Function]}
     >
-      <WithStyles(ListItemIcon)>
-        <pure(AttachMoneyIcon) />
-      </WithStyles(ListItemIcon)>
-      <WithStyles(ListItemText)
+      <WithStyles(ForwardRef(ListItemIcon))>
+        <[object Object] />
+      </WithStyles(ForwardRef(ListItemIcon))>
+      <WithStyles(ForwardRef(ListItemText))
         primary="Revenues"
       />
-    </WithStyles(ListItem)>
-    <WithStyles(ListItem)
+    </WithStyles(ForwardRef(ListItem))>
+    <WithStyles(ForwardRef(ListItem))
       button={true}
       key="/expenses"
       onClick={[Function]}
     >
-      <WithStyles(ListItemIcon)>
-        <pure(MoneyOffIcon) />
-      </WithStyles(ListItemIcon)>
-      <WithStyles(ListItemText)
+      <WithStyles(ForwardRef(ListItemIcon))>
+        <[object Object] />
+      </WithStyles(ForwardRef(ListItemIcon))>
+      <WithStyles(ForwardRef(ListItemText))
         primary="Expenses"
       />
-    </WithStyles(ListItem)>
-    <WithStyles(Divider)
+    </WithStyles(ForwardRef(ListItem))>
+    <WithStyles(ForwardRef(Divider))
       key="pseudo_generated_key_1"
     />
-    <WithStyles(ListItem)
+    <WithStyles(ForwardRef(ListItem))
       button={true}
       key="/categories"
       onClick={[Function]}
     >
-      <WithStyles(ListItemIcon)>
-        <pure(ListIcon) />
-      </WithStyles(ListItemIcon)>
-      <WithStyles(ListItemText)
+      <WithStyles(ForwardRef(ListItemIcon))>
+        <[object Object] />
+      </WithStyles(ForwardRef(ListItemIcon))>
+      <WithStyles(ForwardRef(ListItemText))
         primary="Categories"
       />
-    </WithStyles(ListItem)>
-    <WithStyles(Divider)
+    </WithStyles(ForwardRef(ListItem))>
+    <WithStyles(ForwardRef(Divider))
       key="pseudo_generated_key_2"
     />
-    <WithStyles(ListItem)
+    <WithStyles(ForwardRef(ListItem))
       button={true}
       key="/settings"
       onClick={[Function]}
     >
-      <WithStyles(ListItemIcon)>
-        <pure(SettingsIcon) />
-      </WithStyles(ListItemIcon)>
-      <WithStyles(ListItemText)
+      <WithStyles(ForwardRef(ListItemIcon))>
+        <[object Object] />
+      </WithStyles(ForwardRef(ListItemIcon))>
+      <WithStyles(ForwardRef(ListItemText))
         primary="Settings"
       />
-    </WithStyles(ListItem)>
-  </WithStyles(List)>
-</WithStyles(Drawer)>
+    </WithStyles(ForwardRef(ListItem))>
+  </WithStyles(ForwardRef(List))>
+</WithStyles(ForwardRef(Drawer))>
 `;

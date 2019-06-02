@@ -10,6 +10,7 @@ import Table from '@material-ui/core/Table';
 import TableBody from '@material-ui/core/TableBody';
 import TableCell from '@material-ui/core/TableCell';
 import TableHead from '@material-ui/core/TableHead';
+import TablePagination from '@material-ui/core/TablePagination';
 import TableRow from '@material-ui/core/TableRow';
 import Paper from '@material-ui/core/Paper';
 import { code } from 'currency-codes';
@@ -27,6 +28,8 @@ class ExpensesComponent extends React.Component {
     this.state = {
       deleteExpenseFormOpenedId: null,
       editExpenseFormOpenedId: null,
+      expenseTablePage: 0,
+      expenseTableRowsPerPage: 5,
       isAddExpenseFormOpened: false,
       isDeleteExpenseFormOpened: false,
       isEditExpenseFormOpened: false,
@@ -38,6 +41,8 @@ class ExpensesComponent extends React.Component {
     this.handleCloseDeleteExpenseForm = this.handleCloseDeleteExpenseForm.bind(this);
     this.handleOpenEditExpenseForm = this.handleOpenEditExpenseForm.bind(this);
     this.handleCloseEditExpenseForm = this.handleCloseEditExpenseForm.bind(this);
+    this.handleChangeExpenseTablePage = this.handleChangeExpenseTablePage.bind(this);
+    this.handleChangeExpenseTableRowsPerPage = this.handleChangeExpenseTableRowsPerPage.bind(this);
   }
 
   handleOpenAddExpenseForm() {
@@ -76,6 +81,28 @@ class ExpensesComponent extends React.Component {
     });
   }
 
+  handleChangeExpenseTablePage(e, newPage) {
+    return this.setState({
+      expenseTablePage: newPage,
+    });
+  }
+
+  handleChangeExpenseTableRowsPerPage(e) {
+    const { expenseList } = this.props;
+    const { expenseTablePage } = this.state;
+
+    if (expenseTablePage * +e.target.value >= expenseList.length) {
+      return this.setState({
+        expenseTablePage: Math.floor(expenseList.length / +e.target.value),
+        expenseTableRowsPerPage: +e.target.value,
+      });
+    }
+
+    return this.setState({
+      expenseTableRowsPerPage: +e.target.value,
+    });
+  }
+
   render() {
     const {
       addExpense,
@@ -88,6 +115,8 @@ class ExpensesComponent extends React.Component {
     const {
       deleteExpenseFormOpenedId,
       editExpenseFormOpenedId,
+      expenseTablePage,
+      expenseTableRowsPerPage,
       isAddExpenseFormOpened,
       isDeleteExpenseFormOpened,
       isEditExpenseFormOpened,
@@ -121,32 +150,38 @@ class ExpensesComponent extends React.Component {
               </TableRow>
             </TableHead>
             <TableBody>
-              {expenseList.map(row => (
-                <TableRow key={row.id}>
-                  <TableCell>
-                    {moment(row.date).format('DD. MM. YYYY HH:mm')}
-                  </TableCell>
-                  <TableCell>
-                    {row.expense}
-                  </TableCell>
-                  <TableCell>
-                    {row.amount.toFixed(currencyPrecision)}
-                    {' '}
-                    {settings.currency}
-                  </TableCell>
-                  <TableCell>
-                    {getCategoryLabel(row)}
-                  </TableCell>
-                  <TableCell align="right">
-                    <IconButton onClick={() => this.handleOpenEditExpenseForm(row.id)}>
-                      <IconEdit />
-                    </IconButton>
-                    <IconButton onClick={() => this.handleOpenDeleteExpenseForm(row.id)}>
-                      <IconDelete />
-                    </IconButton>
-                  </TableCell>
-                </TableRow>
-              ))}
+              {expenseList
+                .slice(
+                  expenseTablePage * expenseTableRowsPerPage,
+                  expenseTablePage * expenseTableRowsPerPage + expenseTableRowsPerPage,
+                )
+                .map(row => (
+                  <TableRow key={row.id}>
+                    <TableCell>
+                      {moment(row.date).format('DD. MM. YYYY HH:mm')}
+                    </TableCell>
+                    <TableCell>
+                      {row.expense}
+                    </TableCell>
+                    <TableCell>
+                      {row.amount.toFixed(currencyPrecision)}
+                      {' '}
+                      {settings.currency}
+                    </TableCell>
+                    <TableCell>
+                      {getCategoryLabel(row)}
+                    </TableCell>
+                    <TableCell align="right">
+                      <IconButton onClick={() => this.handleOpenEditExpenseForm(row.id)}>
+                        <IconEdit />
+                      </IconButton>
+                      <IconButton onClick={() => this.handleOpenDeleteExpenseForm(row.id)}>
+                        <IconDelete />
+                      </IconButton>
+                    </TableCell>
+                  </TableRow>
+                ))
+              }
               {expenseList.length === 0 && (
                 <TableRow>
                   <TableCell colSpan={3}>
@@ -156,6 +191,21 @@ class ExpensesComponent extends React.Component {
               )}
             </TableBody>
           </Table>
+          <TablePagination
+            component="div"
+            count={expenseList.length}
+            backIconButtonProps={{
+              'aria-label': 'Previous Page',
+            }}
+            nextIconButtonProps={{
+              'aria-label': 'Next Page',
+            }}
+            onChangePage={this.handleChangeExpenseTablePage}
+            onChangeRowsPerPage={this.handleChangeExpenseTableRowsPerPage}
+            page={expenseTablePage}
+            rowsPerPage={expenseTableRowsPerPage}
+            rowsPerPageOptions={[5, 10, 25]}
+          />
         </Paper>
         <FloatingActionButton
           className={styles.addButton}
