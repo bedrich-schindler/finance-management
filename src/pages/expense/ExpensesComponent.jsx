@@ -12,10 +12,15 @@ import TableCell from '@material-ui/core/TableCell';
 import TableHead from '@material-ui/core/TableHead';
 import TablePagination from '@material-ui/core/TablePagination';
 import TableRow from '@material-ui/core/TableRow';
+import TableSortLabel from '@material-ui/core/TableSortLabel';
 import Paper from '@material-ui/core/Paper';
 import { code } from 'currency-codes';
 import { Layout } from '../../components/Layout';
 import { CATEGORY_TYPES } from '../../resources/category';
+import {
+  getSorting,
+  sort,
+} from '../../services/sortingService';
 import { AddExpenseForm } from './components/AddExpenseForm';
 import { EditExpenseForm } from './components/EditExpenseForm';
 import { DeleteExpenseForm } from './components/DeleteExpenseForm';
@@ -28,6 +33,8 @@ class ExpensesComponent extends React.Component {
     this.state = {
       deleteExpenseFormOpenedId: null,
       editExpenseFormOpenedId: null,
+      expenseTableOrder: 'desc',
+      expenseTableOrderBy: 'date',
       expenseTablePage: 0,
       expenseTableRowsPerPage: 5,
       isAddExpenseFormOpened: false,
@@ -103,6 +110,17 @@ class ExpensesComponent extends React.Component {
     });
   }
 
+  handleChangeSortTable(property) {
+    this.setState(({
+      expenseTableOrder, expenseTableOrderBy,
+    }) => ({
+      expenseTableOrder: (expenseTableOrderBy === property && expenseTableOrder === 'desc')
+        ? 'asc'
+        : 'desc',
+      expenseTableOrderBy: property,
+    }));
+  }
+
   render() {
     const {
       addExpense,
@@ -117,6 +135,8 @@ class ExpensesComponent extends React.Component {
       editExpenseFormOpenedId,
       expenseTablePage,
       expenseTableRowsPerPage,
+      expenseTableOrder,
+      expenseTableOrderBy,
       isAddExpenseFormOpened,
       isDeleteExpenseFormOpened,
       isEditExpenseFormOpened,
@@ -142,15 +162,47 @@ class ExpensesComponent extends React.Component {
           <Table>
             <TableHead>
               <TableRow>
-                <TableCell>Date</TableCell>
-                <TableCell>Expense</TableCell>
-                <TableCell>Amount</TableCell>
-                <TableCell>Category</TableCell>
+                <TableCell sortDirection={expenseTableOrder}>
+                  <TableSortLabel
+                    active={expenseTableOrderBy === 'date'}
+                    direction={expenseTableOrder}
+                    onClick={() => this.handleChangeSortTable('date')}
+                  >
+                    Date
+                  </TableSortLabel>
+                </TableCell>
+                <TableCell sortDirection={expenseTableOrder}>
+                  <TableSortLabel
+                    active={expenseTableOrderBy === 'expense'}
+                    direction={expenseTableOrder}
+                    onClick={() => this.handleChangeSortTable('expense')}
+                  >
+                    Expense
+                  </TableSortLabel>
+                </TableCell>
+                <TableCell sortDirection={expenseTableOrder}>
+                  <TableSortLabel
+                    active={expenseTableOrderBy === 'amount'}
+                    direction={expenseTableOrder}
+                    onClick={() => this.handleChangeSortTable('amount')}
+                  >
+                    Amount
+                  </TableSortLabel>
+                </TableCell>
+                <TableCell sortDirection={expenseTableOrder}>
+                  <TableSortLabel
+                    active={expenseTableOrderBy === 'category'}
+                    direction={expenseTableOrder}
+                    onClick={() => this.handleChangeSortTable('category')}
+                  >
+                    Category
+                  </TableSortLabel>
+                </TableCell>
                 <TableCell />
               </TableRow>
             </TableHead>
             <TableBody>
-              {expenseList
+              {sort(expenseList, getSorting(expenseTableOrder, expenseTableOrderBy))
                 .slice(
                   expenseTablePage * expenseTableRowsPerPage,
                   expenseTablePage * expenseTableRowsPerPage + expenseTableRowsPerPage,

@@ -12,10 +12,15 @@ import TableCell from '@material-ui/core/TableCell';
 import TableHead from '@material-ui/core/TableHead';
 import TablePagination from '@material-ui/core/TablePagination';
 import TableRow from '@material-ui/core/TableRow';
+import TableSortLabel from '@material-ui/core/TableSortLabel';
 import Paper from '@material-ui/core/Paper';
 import { code } from 'currency-codes';
 import { Layout } from '../../components/Layout';
 import { CATEGORY_TYPES } from '../../resources/category';
+import {
+  getSorting,
+  sort,
+} from '../../services/sortingService';
 import { AddRevenueForm } from './components/AddRevenueForm';
 import { EditRevenueForm } from './components/EditRevenueForm';
 import { DeleteRevenueForm } from './components/DeleteRevenueForm';
@@ -31,6 +36,8 @@ class RevenuesComponent extends React.Component {
       isAddRevenueFormOpened: false,
       isDeleteRevenueFormOpened: false,
       isEditRevenueFormOpened: false,
+      revenueTableOrder: 'desc',
+      revenueTableOrderBy: 'date',
       revenueTablePage: 0,
       revenueTableRowsPerPage: 5,
     };
@@ -103,6 +110,17 @@ class RevenuesComponent extends React.Component {
     });
   }
 
+  handleChangeSortTable(property) {
+    this.setState(({
+      revenueTableOrder, revenueTableOrderBy,
+    }) => ({
+      revenueTableOrder: (revenueTableOrderBy === property && revenueTableOrder === 'desc')
+        ? 'asc'
+        : 'desc',
+      revenueTableOrderBy: property,
+    }));
+  }
+
   render() {
     const {
       addRevenue,
@@ -118,6 +136,8 @@ class RevenuesComponent extends React.Component {
       isAddRevenueFormOpened,
       isDeleteRevenueFormOpened,
       isEditRevenueFormOpened,
+      revenueTableOrder,
+      revenueTableOrderBy,
       revenueTablePage,
       revenueTableRowsPerPage,
     } = this.state;
@@ -142,15 +162,47 @@ class RevenuesComponent extends React.Component {
           <Table>
             <TableHead>
               <TableRow>
-                <TableCell>Date</TableCell>
-                <TableCell>Revenue</TableCell>
-                <TableCell>Amount</TableCell>
-                <TableCell>Category</TableCell>
+                <TableCell sortDirection={revenueTableOrder}>
+                  <TableSortLabel
+                    active={revenueTableOrderBy === 'date'}
+                    direction={revenueTableOrder}
+                    onClick={() => this.handleChangeSortTable('date')}
+                  >
+                    Date
+                  </TableSortLabel>
+                </TableCell>
+                <TableCell sortDirection={revenueTableOrder}>
+                  <TableSortLabel
+                    active={revenueTableOrderBy === 'revenue'}
+                    direction={revenueTableOrder}
+                    onClick={() => this.handleChangeSortTable('revenue')}
+                  >
+                    Revenue
+                  </TableSortLabel>
+                </TableCell>
+                <TableCell sortDirection={revenueTableOrder}>
+                  <TableSortLabel
+                    active={revenueTableOrderBy === 'amount'}
+                    direction={revenueTableOrder}
+                    onClick={() => this.handleChangeSortTable('amount')}
+                  >
+                    Amount
+                  </TableSortLabel>
+                </TableCell>
+                <TableCell sortDirection={revenueTableOrder}>
+                  <TableSortLabel
+                    active={revenueTableOrderBy === 'category'}
+                    direction={revenueTableOrder}
+                    onClick={() => this.handleChangeSortTable('category')}
+                  >
+                    Category
+                  </TableSortLabel>
+                </TableCell>
                 <TableCell />
               </TableRow>
             </TableHead>
             <TableBody>
-              {revenueList
+              {sort(revenueList, getSorting(revenueTableOrder, revenueTableOrderBy))
                 .slice(
                   revenueTablePage * revenueTableRowsPerPage,
                   revenueTablePage * revenueTableRowsPerPage + revenueTableRowsPerPage,
