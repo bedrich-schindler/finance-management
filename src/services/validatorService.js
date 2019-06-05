@@ -16,7 +16,7 @@ export const validateCategory = (data, storedDataObj) => {
   ];
 
   emptyCheck.forEach((element) => {
-    if (data[element].trim() === '') {
+    if (data[element].toString().trim() === '') {
       errors.elements[element] = 'Field is required.';
       errors.isValid = false;
     }
@@ -50,7 +50,6 @@ export const validateExpense = (data) => {
   const errors = {
     elements: {
       amount: null,
-      category: null,
       date: null,
       expense: null,
     },
@@ -59,17 +58,21 @@ export const validateExpense = (data) => {
 
   const emptyCheck = [
     'amount',
-    'category',
     'date',
     'expense',
   ];
 
   emptyCheck.forEach((element) => {
-    if (data[element].trim() === '') {
+    if (data[element].toString().trim() === '') {
       errors.elements[element] = 'Field is required.';
       errors.isValid = false;
     }
   });
+
+  if (errors.elements.amount !== null && data.amount <= 0) {
+    errors.elements.amount = 'Field must be greater than 0.';
+    errors.isValid = false;
+  }
 
   return errors;
 };
@@ -78,7 +81,6 @@ export const validateRevenue = (data) => {
   const errors = {
     elements: {
       amount: null,
-      category: null,
       date: null,
       revenue: null,
     },
@@ -87,17 +89,21 @@ export const validateRevenue = (data) => {
 
   const emptyCheck = [
     'amount',
-    'category',
     'date',
     'revenue',
   ];
 
   emptyCheck.forEach((element) => {
-    if (data[element].trim() === '') {
+    if (data[element].toString().trim() === '') {
       errors.elements[element] = 'Field is required.';
       errors.isValid = false;
     }
   });
+
+  if (errors.elements.amount !== null && data.amount <= 0) {
+    errors.elements.amount = 'Field must be greater than 0.';
+    errors.isValid = false;
+  }
 
   return errors;
 };
@@ -121,7 +127,7 @@ export const validateUser = (data) => {
   ];
 
   emptyCheck.forEach((element) => {
-    if (data[element].trim() === '') {
+    if (data[element].toString().trim() === '') {
       errors.elements[element] = 'Field is required.';
       errors.isValid = false;
     }
