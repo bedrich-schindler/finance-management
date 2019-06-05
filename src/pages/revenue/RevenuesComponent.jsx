@@ -236,7 +236,7 @@ class RevenuesComponent extends React.Component {
               }
               {revenueList.length === 0 && (
                 <TableRow>
-                  <TableCell colSpan={3}>
+                  <TableCell colSpan={5}>
                     No data available.
                   </TableCell>
                 </TableRow>
