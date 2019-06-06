@@ -1,0 +1,41 @@
+// stylelint-disable declaration-no-important
+
+$layout-spacing: 2.5rem;
+$field-spacing: $layout-spacing * 0.5;
+
+.paperWrapper {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.paper {
+  flex: 1;
+  padding: $field-spacing;
+}
+
+.paper:first-child {
+  margin-right: $layout-spacing / 2;
+}
+
+.paper:last-child {
+  margin-left: $layout-spacing / 2;
+}
+
+.table tbody th {
+  font-weight: bold;
+}
+
+@media screen and (max-width: 979px) {
+  .paperWrapper {
+    flex-direction: column;
+  }
+
+  .paper:first-child {
+    margin-right: 0;
+  }
+
+  .paper:last-child {
+    margin-top: $layout-spacing;
+    margin-left: 0;
+  }
+}
