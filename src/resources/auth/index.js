@@ -5,6 +5,10 @@ export {
 } from './actions';
 
 export {
+  LOGIN,
+} from './actionTypes';
+
+export {
   selectLoggedUser,
 } from './selectors';
 

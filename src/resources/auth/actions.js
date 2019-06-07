@@ -23,7 +23,7 @@ export const login = data => (dispatch) => {
   }
 
   dispatch({
-    payload: user.info,
+    payload: user,
     type: types.LOGIN,
   });
 

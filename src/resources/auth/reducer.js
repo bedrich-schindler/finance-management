@@ -13,7 +13,7 @@ export default (state, action) => {
   } = action;
 
   if (type === actionTypes.LOGIN) {
-    return state.set('loggedUser', Immutable.fromJS(payload));
+    return Immutable.fromJS(payload.store.auth);
   }
 
   if (type === actionTypes.LOGOUT) {

@@ -1,4 +1,5 @@
 import Immutable from 'immutable';
+import { LOGIN } from '../auth/index';
 import initialState from './initialState';
 import * as actionTypes from './actionTypes';
 
@@ -11,6 +12,10 @@ export default (state, action) => {
     payload,
     type,
   } = action;
+
+  if (type === LOGIN) {
+    return Immutable.fromJS(payload.store.expense);
+  }
 
   if (type === actionTypes.ADD_EXPENSE) {
     const expense = Immutable.fromJS(payload);
