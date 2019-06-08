@@ -10,6 +10,12 @@ import {
 const APP_STORE_KEY = `${STORE_KEY}_app`;
 const LOGGED_USER_STORE_KEY = `${STORE_KEY}_logged_user`;
 
+/**
+ * Gets flag whether user with entered username is saved in application store (in local storage).
+ *
+ * @param userKey Username.
+ * @returns {boolean} Flag whether is saved.
+ */
 export const isUserSaved = (userKey) => {
   const applicationStoreEncrypted = localStorage.getItem(APP_STORE_KEY);
 
@@ -26,6 +32,14 @@ export const isUserSaved = (userKey) => {
   return false;
 };
 
+/**
+ * Gets user data object or null if credentials are not correct
+ * or user is not saved in application store (in local storage).
+ *
+ * @param userKey Username.
+ * @param userPasswordHashed Password hash to be used for encryption of user data.
+ * @returns {object|null} User data object.
+ */
 export const getUserData = (userKey, userPasswordHashed) => {
   const applicationStoreEncrypted = localStorage.getItem(APP_STORE_KEY);
 
@@ -42,6 +56,11 @@ export const getUserData = (userKey, userPasswordHashed) => {
   return null;
 };
 
+/**
+ * Gets logged user credentials object (from session storage) of null if nobody is logged in.
+ *
+ * @returns {object|null} User credentials object.
+ */
 export const getLoggedUserCredentials = () => {
   const loggedUserCredentialsEncrypted = sessionStorage.getItem(LOGGED_USER_STORE_KEY);
 
@@ -56,6 +75,11 @@ export const getLoggedUserCredentials = () => {
   return null;
 };
 
+/**
+ * Gets logged user data object (from local storage) of null if nobody is logged in.
+ *
+ * @returns {object|null} Logged user data object.
+ */
 export const getLoggedUserData = () => {
   const loggedUserCredentials = getLoggedUserCredentials();
 
@@ -66,6 +90,13 @@ export const getLoggedUserData = () => {
   return null;
 };
 
+/**
+ * Logs in user (and saves credentials to session storage).
+ *
+ * @param userKey Username
+ * @param userPassword Hashed password.
+ * @returns {boolean} Flag whether logged in successfully.
+ */
 export const loginUser = (userKey, userPassword) => {
   const loggedUserData = getUserData(userKey, userPassword);
 
@@ -84,10 +115,22 @@ export const loginUser = (userKey, userPassword) => {
   return false;
 };
 
+/**
+ * Logs in user (and removes credentials to session storage).
+ */
 export const logoutUser = () => {
   sessionStorage.removeItem(LOGGED_USER_STORE_KEY);
 };
 
+/**
+ * Saves user data (to local storage) and logs in user (and saves credentials to session storage).
+ *
+ * @param userKey Username.
+ * @param userPassword Hashed password.
+ * @param userInfo User info object.
+ * @param userStore User store object.
+ * @returns {object} User data object.
+ */
 export const saveUserData = (userKey, userPassword, userInfo, userStore) => {
   let applicationStoreEncrypted = localStorage.getItem(APP_STORE_KEY);
   let applicationStore = {};
@@ -124,6 +167,12 @@ export const saveUserData = (userKey, userPassword, userInfo, userStore) => {
   return userObject;
 };
 
+/**
+ * Updates logged user store.
+ *
+ * @param userStore Logged user store.
+ * @returns {boolean}  Flag if updated successfully.
+ */
 export const updateLoggedUserData = (userStore) => {
   const loggedUserCredentials = getLoggedUserCredentials();
 

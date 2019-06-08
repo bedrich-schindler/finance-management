@@ -1,6 +1,13 @@
 import { CATEGORY_TYPES } from '../resources/category';
 import { isUserSaved } from './storageService';
 
+/**
+ * Validates category.
+ *
+ * @param data Category to be validated.
+ * @param storedDataObj Additional data used for validation.
+ * @returns {object} Validation result object.
+ */
 export const validateCategory = (data, storedDataObj) => {
   const errors = {
     elements: {
@@ -46,6 +53,12 @@ export const validateCategory = (data, storedDataObj) => {
   return errors;
 };
 
+/**
+ * Validates expense.
+ *
+ * @param data Expense to be validated.
+ * @returns {object} Validation result object.
+ */
 export const validateExpense = (data) => {
   const errors = {
     elements: {
@@ -77,6 +90,12 @@ export const validateExpense = (data) => {
   return errors;
 };
 
+/**
+ * Validates revenue.
+ *
+ * @param data Revenue to be validated.
+ * @returns {object} Validation result object.
+ */
 export const validateRevenue = (data) => {
   const errors = {
     elements: {
@@ -108,6 +127,12 @@ export const validateRevenue = (data) => {
   return errors;
 };
 
+/**
+ * Validates user.
+ *
+ * @param data User to be validated.
+ * @returns {object} Validation result object.
+ */
 export const validateUser = (data) => {
   const errors = {
     elements: {

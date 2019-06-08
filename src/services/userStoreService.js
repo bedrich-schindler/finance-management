@@ -4,6 +4,12 @@ import {
   encryptObject,
 } from './ecryptionService';
 
+/**
+ * Converts encrypted JSON in base64 to application store.
+ *
+ * @param storeBase64URIString Encrypted JSON in base64
+ * @returns {object} Application store.
+ */
 export const convertFileToStore = (storeBase64URIString) => {
   const storeBase64String = decodeURIComponent(storeBase64URIString);
   const storeURIString = atob(storeBase64String);
@@ -18,6 +24,12 @@ export const convertFileToStore = (storeBase64URIString) => {
   return JSON.parse(storeString);
 };
 
+/**
+ * Converts application store to encrypted JSON in base64.
+ *
+ * @param store Application store.
+ * @returns {string} Encrypted JSON in base64
+ */
 export const convertStoreToFile = (store) => {
   const storeString = JSON.stringify(store);
   const storeStringEncrypted = encryptObject(storeString, STORE_SECRET);

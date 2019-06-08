@@ -7,6 +7,7 @@ import app from './app';
 import appHistory from './appHistory';
 import store from './store';
 
+// Install offline-plugin service worker
 install({
   onUpdateReady: () => {
     applyUpdate();
@@ -16,6 +17,7 @@ install({
   },
 });
 
+// Render application
 render(
   app(store, appHistory),
   document.getElementById('app'),
