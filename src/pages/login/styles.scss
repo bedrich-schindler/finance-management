@@ -9,14 +9,16 @@ $button-spacing: $layout-spacing * 0.25;
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  box-sizing: border-box;
   width: 100%;
   height: 100%;
+  padding: 2.5em;
 }
 
 .loginBox {
   max-width: 400px;
   padding: $layout-spacing;
-  margin: $layout-spacing;
+  margin: $layout-spacing 0;
 }
 
 .signInIcon {
@@ -61,4 +63,66 @@ $button-spacing: $layout-spacing * 0.25;
   margin-top: -1rem;
   font-weight: 100;
   font-size: 0.85rem;
+}
+
+.logo {
+  animation: spinAndScale 2s linear;
+}
+
+.logoTitle {
+  font-size: 1.5rem;
+  transform: scale(0);
+  animation: scale 2s linear;
+  animation-fill-mode: forwards;
+}
+
+.loadBoxWrapper {
+  display: flex;
+  flex-direction: column;
+}
+
+.beforeLoadBox {
+  text-align: center;
+}
+
+.afterLoadBox {
+  opacity: 0;
+  max-height: 0;
+  text-align: center;
+  animation: afterLoad linear;
+  animation-delay: 3s;
+  animation-fill-mode: forwards;
+}
+
+@keyframes afterLoad {
+  100% {
+    opacity: 1;
+    max-height: 100%;
+  }
+}
+
+@keyframes scale {
+  50% {
+    transform: scale(0);
+  }
+
+  100% {
+    transform: scale(1);
+  }
+}
+
+@keyframes spinAndScale {
+  0% {
+    transform: rotate(0) scale(0);
+  }
+
+  100% {
+    transform: rotate(360deg) scale(1);
+  }
+}
+
+@media screen and (max-width: 380px) {
+  .loginBox {
+    padding: $layout-spacing / 2;
+  }
 }

@@ -5,4 +5,7 @@
 
 # Project specific
 /config/config.js
-/public/generated
+/public/200.html
+/public/bundle.js
+/public/sw.js
+/public/appcache
