@@ -1,8 +1,6 @@
-// stylelint-disable declaration-no-important
+@import '../../styles/variables';
 
-$layout-spacing: 2.5rem;
-$field-spacing: $layout-spacing * 0.5;
-$button-spacing: $layout-spacing * 0.25;
+// stylelint-disable declaration-no-important
 
 .main {
   display: flex;

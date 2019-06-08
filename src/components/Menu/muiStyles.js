@@ -27,6 +27,9 @@ export default theme => ({
       duration: theme.transitions.duration.leavingScreen,
       easing: theme.transitions.easing.sharp,
     }),
+    [theme.breakpoints.down(768)]: {
+      width: 0,
+    },
     width: theme.spacing(7) + 1,
   },
   drawerOpen: {
