@@ -105,7 +105,7 @@
     "jest": "jest",
     "start": "webpack-dev-server --mode development",
     "stylelint": "stylelint \"src/**/*.scss\" \"public/css/*.css\" --config stylelint.config.js",
-    "surge": "cp public/index.html public/200.html && surge public finance-management.surge.sh && rm public/200.html",
+    "surge": "cp public/index.html public/200.html && surge public https://finance-management.surge.sh && rm public/200.html",
     "test": "stylelint \"src/**/*.scss\" \"public/css/*.css\" --config stylelint.config.js && eslint --ext js,jsx src && jest"
   }
 }
