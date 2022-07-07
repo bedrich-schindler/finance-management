@@ -14,7 +14,7 @@
     "history": "^4.9.0",
     "i18next": "^15.1.0",
     "immutable": "^4.0.0-rc.12",
-    "moment": "^2.24.0",
+    "moment": "^2.29.4",
     "offline-plugin": "^5.0.7",
     "prop-types": "^15.7.2",
     "react": "^16.8.6",
